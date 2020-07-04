@@ -7,7 +7,7 @@ pipeline {
                 sh 'pwd'
                 sh 'whoami'
                 sh 'npm install'
-                sh 'zip -r * lambda-package.zip '
+                sh 'zip -r lambda-package.zip * '
             }
         }
     }
