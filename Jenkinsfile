@@ -1,14 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'cat /home/cloud_user/hello.txt'
-                sh 'pwd'
-                sh 'whoami'
+
                 sh 'npm install'
-                sh 'zip -r lambda-package.zip * '
+                sh 'zip -r lambda-package.zip *'
             }
         }
+        stage ('Deploy') {
+           sh 'terraform init'
+           sh 'terraform apply -auto-approve'
+         }
     }
 }
