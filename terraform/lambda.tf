@@ -1,4 +1,4 @@
- resource "aws_lambda_function" "lambda" {
+resource "aws_lambda_function" "lambda" {
    function_name = var.lambda_name
 
    
@@ -16,7 +16,16 @@
       S3_BUCKET = var.s3_bucket_reseized
     }
   }
+tracing_config {
+  mode = "Active"
+}
  }
+
+#Manging cloud_wath log group
+#resource "aws_cloudwatch_log_group" "example" {
+#  name              = "/aws/lambda/${aws_lambda_function.lambda.function_name}"
+#  retention_in_days = 14
+#}
 
  # IAM role which dictates what other AWS services the Lambda function
  # may access.
@@ -77,6 +86,11 @@ resource "aws_iam_policy" "policy" {
 resource "aws_iam_role_policy_attachment" "attach-policy" {
   role       = "${aws_iam_role.lambda_exec.name}"
   policy_arn = "${aws_iam_policy.policy.arn}"
+}
+#attaching policy to the role
+resource "aws_iam_role_policy_attachment" "attach-policy-xray" {
+  role       = "${aws_iam_role.lambda_exec.name}"
+  policy_arn = "${data.aws_iam_policy.aws_xray_write_only_access.arn}"
 }
  resource "aws_api_gateway_resource" "proxy" {
    rest_api_id = aws_api_gateway_rest_api.apigw.id
