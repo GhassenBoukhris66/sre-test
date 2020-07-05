@@ -11,13 +11,12 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-           sh 'pwd'
            dir('terraform'){
-            sh "pwd"
+               
+              sh 'terraform init'
+              sh 'terraform apply -auto-approve'
           }
          
-           sh 'terraform init'
-           sh 'terraform apply -auto-approve'
          }
         }
     }
