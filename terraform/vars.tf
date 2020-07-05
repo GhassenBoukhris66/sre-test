@@ -39,3 +39,6 @@ description = "policy attached to lambda role"
 variable "s3_bucket_reseized" {
 description = "bucket where the reseized images will be stored"
 }
+variable "shared_credentials" {
+description = "directory where shared credentials are stored"
+}
