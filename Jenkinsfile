@@ -6,6 +6,7 @@ pipeline {
 
                 sh 'npm install'
                 sh 'zip -r lambda-package.zip *'
+                sh 's3 cp lambda-package.zip s3://lambdademogh/v1.1.0/lambda3.zip'
             }
         }
         stage ('Deploy') {
