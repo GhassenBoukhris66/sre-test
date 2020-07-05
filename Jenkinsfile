@@ -11,7 +11,9 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
+           sh 'pwd'
            sh 'cd terraform'
+           sh 'pwd'
            sh 'terraform init'
            sh 'terraform apply -auto-approve'
          }
