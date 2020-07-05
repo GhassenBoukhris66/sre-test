@@ -21,66 +21,6 @@ tracing_config {
 }
  }
 
-#Manging cloud_wath log group
-#resource "aws_cloudwatch_log_group" "example" {
-#  name              = "/aws/lambda/${aws_lambda_function.lambda.function_name}"
-#  retention_in_days = 14
-#}
-
- # IAM role which dictates what other AWS services the Lambda function
- # may access.
- resource "aws_iam_role" "lambda_exec" {
-   name = var.iam_lambda
-
-   assume_role_policy = <<EOF
-{
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Action": "sts:AssumeRole",
-       "Principal": {
-         "Service": "lambda.amazonaws.com"
-       },
-       "Effect": "Allow",
-       "Sid": ""
-     }
-   ]
-}
- EOF
-
- }
- #Created Policy for IAM Role
-resource "aws_iam_policy" "policy" {
-  name = var.iam_policy
-  description = "policy to attach to lambda"
-
-
-      policy = <<EOF
-{
-"Version": "2012-10-17",
-"Statement": [
-    {
-        "Effect": "Allow",
-        "Action": [
-            "logs:*"
-        ],
-        "Resource": "arn:aws:logs:*:*:*"
-    },
-    {
-        "Effect": "Allow",
-        "Action": [
-            "s3:*"
-        ],
-        "Resource": [
-         "arn:aws:s3::: ${var.s3_bucket_reseized}",
-         "arn:aws:s3:::${var.s3_bucket_reseized}/*"
-]
-    }
-]
-
-} 
-    EOF
-    }
 
 #attaching policy to the role
 resource "aws_iam_role_policy_attachment" "attach-policy" {
