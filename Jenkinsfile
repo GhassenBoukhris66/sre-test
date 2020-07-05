@@ -5,7 +5,7 @@ pipeline {
             steps {
 
                 sh 'npm install'
-                sh 'zip -r lambda-package.zip *'
+                sh 'zip -r lambda-package.zip * -x terraform'
                 sh 's3 cp lambda-package.zip s3://lambdademogh/v1.1.0/lambda3.zip'
             }
         }
