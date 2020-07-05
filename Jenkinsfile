@@ -12,7 +12,7 @@ pipeline {
         stage ('Deploy') {
             steps {
            sh 'pwd'
-           sh 'cd terraform'
+           sh 'cd /var/lib/jenkins/workspace/sre-test/terraform'
            sh 'pwd'
            sh 'terraform init'
            sh 'terraform apply -auto-approve'
