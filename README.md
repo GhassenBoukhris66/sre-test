@@ -1,6 +1,6 @@
 # sre-test
 
-Requirements:
+## Requirements:
 
 If jenkins wille be used: 
 Need to have the following dependencies isntalled in the jenkins server:
@@ -17,6 +17,6 @@ NB: s3 bucket name and bucket should be the same as the declared variables in Te
 
 
 
-Terraform requirements:
+## Terraform requirements:
 
 To make terraform code work you should update the terraform.tfvars file with the appropriate nput as described in terraform/vars.tf file
