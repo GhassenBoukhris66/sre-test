@@ -28,8 +28,11 @@ To store tfstate in s3 backend you need to uncoment the terraform block in provi
 You'll need to put avariables in terraform.tfstatevars 
 example of tfvars content:
 
+
 lambda_name = "lambda-test"
+
 apigw_name = "apigw-lambda"
+
 s3_bucket = "bucket-name"  #bucket containing the zip package
 s3_key = "v1.1.0/lambda3.zip"  # key of thz zip package
 handler = "app.lambdaHandler"
