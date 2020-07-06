@@ -23,9 +23,10 @@ To make terraform code work you should update the terraform.tfvars file with the
 
 To store tfstate in s3 backend you need to uncoment the terraform block in provider.tf and enter bucket_backend name
   
-##Variables
+## Variables
 
 You'll need to put avariables in terraform.tfstatevars 
+
 example of tfvars content:
 
 
