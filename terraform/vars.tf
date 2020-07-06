@@ -43,9 +43,4 @@ variable "shared_credentials" {
 description = "directory where shared credentials are stored"
 }
 
-variable "bucket_backend" {
-description = "name of the backend s3 bucket"
-}
-variable "s3_key_backend" {
-description = "name of the backend s3 key"
-}
+
