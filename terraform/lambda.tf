@@ -4,6 +4,7 @@ resource "aws_lambda_function" "lambda" {
    s3_key    = var.s3_key
    handler = var.handler
    runtime = var.runtime
+   timeout= 5
    role = aws_iam_role.lambda_exec.arn
     environment {
     variables = {
