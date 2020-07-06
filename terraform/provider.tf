@@ -10,7 +10,7 @@ provider "aws" {
 #terraform {
 #  backend "s3" {
 #    bucket = "lambda-backendgh"
-#    key    = "sta.tf"
+#    key    = "state.tf"
 #    region = "eu-west-3"
 #  }
 #}
