@@ -3,7 +3,27 @@ resource "aws_api_gateway_rest_api" "apigw" {
   description = "Terraform Serverless Application Example"
   binary_media_types= ["multipart/form-data"]
 }
+ resource "aws_api_gateway_resource" "proxy" {
+   rest_api_id = aws_api_gateway_rest_api.apigw.id
+   parent_id   = aws_api_gateway_rest_api.apigw.root_resource_id
+   path_part   = "{proxy+}"
+}
 
+resource "aws_api_gateway_method" "proxy" {
+   rest_api_id   = aws_api_gateway_rest_api.apigw.id
+   resource_id   = aws_api_gateway_resource.proxy.id
+   http_method   = "POST"
+   authorization = "NONE"
+ }
+
+resource "aws_lambda_permission" "apigw" {
+   statement_id  = "AllowAPIGatewayInvoke"
+   action        = "lambda:InvokeFunction"
+   function_name = aws_lambda_function.lambda.function_name
+   principal     = "apigateway.amazonaws.com"
+
+   source_arn = "${aws_api_gateway_rest_api.apigw.execution_arn}/*/*"
+ }
 resource "aws_api_gateway_integration" "lambda" {
    rest_api_id = aws_api_gateway_rest_api.apigw.id
    resource_id = aws_api_gateway_method.proxy.resource_id
