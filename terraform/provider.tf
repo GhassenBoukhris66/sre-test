@@ -7,10 +7,10 @@ provider "aws" {
 
 #Please uncomment if you need to store tfstate in ans s3 backend
 
-terraform {
-  backend "s3" {
-    bucket = "lambda-backendgh"
-    key    = "sta.tf"
-    region = "eu-west-3"
-  }
-}
+#terraform {
+#  backend "s3" {
+#    bucket = "lambda-backendgh"
+#    key    = "sta.tf"
+#    region = "eu-west-3"
+#  }
+#}
