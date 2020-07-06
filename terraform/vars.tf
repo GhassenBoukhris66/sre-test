@@ -9,12 +9,12 @@ description = "name of the api gateway"
 }
 variable "s3_bucket" {
 
-description = "name of the s3 bucket"
+description = "name of the s3 bucket containing the zip package"
 }
 
 variable "s3_key" {
 
-description = "name of the s3 key"
+description = "name of the s3 key of the zip package"
 }
 
 variable "handler" {
