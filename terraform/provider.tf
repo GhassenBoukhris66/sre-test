@@ -9,8 +9,8 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = var.bucket_backend
-    key    = var.s3_key_backend
+    bucket = "lambda-backendgh"
+    key    = "sta.tf"
     region = "eu-west-3"
   }
 }
