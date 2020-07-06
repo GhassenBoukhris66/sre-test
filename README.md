@@ -13,7 +13,7 @@ You will need to have a created s3 bucket to put the zip package in there ( in t
 
 change line 9 in Jenkinsfile with the name of the s3 bucket and the desired key (s3://s3-bucket-name/s3_key)
 
-NB: s3 bucket name and bucket should be the same as the declared variables in Terraform s3_ubucket and s3_key
+NB: s3 bucket name and bucket should be the same as the declared variables in Terraform s3_bucket and s3_key
 
 
 
