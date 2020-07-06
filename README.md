@@ -21,5 +21,10 @@ NB: s3 bucket name and bucket should be the same as the declared variables in Te
 
 To make terraform code work you should update the terraform.tfvars file with the appropriate input as described in terraform/vars.tf file
 
-To store tfstate in s3 backend you need to uncoment the terraform block in provider.tf and bucket_backend and s3_key_backend variables in terraform.tfvars
+To store tfstate in s3 backend you need to uncoment the terraform block in provider.tf and enter bucket_backend name
   
+  
+  
+## Result/output:
+
+After finishing executing, terraform will return the api url as output, you can use the url to make post requests
