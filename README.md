@@ -20,3 +20,6 @@ NB: s3 bucket name and bucket should be the same as the declared variables in Te
 ## Terraform requirements:
 
 To make terraform code work you should update the terraform.tfvars file with the appropriate input as described in terraform/vars.tf file
+
+To store tfstate in s3 backeend you need to uncoment the terraform block in provider.tf and bucket_backend and s3_key_backend variables in terraform.tfvars
+  
