@@ -1,6 +1,7 @@
+#create api_gw rest api
 resource "aws_api_gateway_rest_api" "apigw" {
   name        = var.apigw_name
-  description = "Terraform Serverless Application Example"
+  description = "Terraform Serverless Application "
   binary_media_types= ["multipart/form-data"]
 }
  resource "aws_api_gateway_resource" "proxy" {
@@ -16,6 +17,7 @@ resource "aws_api_gateway_method" "proxy" {
    authorization = "NONE"
  }
 
+#grant permission to invoke lambda
 resource "aws_lambda_permission" "apigw" {
    statement_id  = "AllowAPIGatewayInvoke"
    action        = "lambda:InvokeFunction"
@@ -66,10 +68,12 @@ output "base_url" {
   value = aws_api_gateway_deployment.apigwdeploy.invoke_url
 }
 
-
+# grant permission to apigw to communicate with cloud_watch
 resource "aws_api_gateway_account" "apigw_account" {
   cloudwatch_role_arn = "${aws_iam_role.cloudwatch.arn}"
 }
+
+#mange methode settings
 resource "aws_api_gateway_method_settings" "general_settings" {
   depends_on = [
     aws_api_gateway_account.apigw_account,
