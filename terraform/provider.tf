@@ -5,4 +5,10 @@ provider "aws" {
 
 }
 
-
+#terraform {
+#  backend "s3" {
+#    bucket = var.bucket_backend
+#    key    = var.s3_key_backend
+#    region = "eu-west-3"
+ # }
+#}
