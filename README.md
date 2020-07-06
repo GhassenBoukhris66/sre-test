@@ -23,7 +23,21 @@ To make terraform code work you should update the terraform.tfvars file with the
 
 To store tfstate in s3 backend you need to uncoment the terraform block in provider.tf and enter bucket_backend name
   
-  
+##Variables
+
+You'll need to put avariables in terraform.tfstatevars 
+example of tfvars content:
+
+lambda_name = "lambda-test"
+apigw_name = "apigw-lambda"
+s3_bucket = "bucket-name"  #bucket containing the zip package
+s3_key = "v1.1.0/lambda3.zip"  # key of thz zip package
+handler = "app.lambdaHandler"
+runtime = "nodejs12.x"
+iam_lambda = "iam-role-lambda"
+iam_policy = "iam-policy-lambda"
+s3_bucket_reseized = "lambda-images-reseize"   #bucket that will store the images
+shared_credentials= "~/.aws/credentials"
   
 ## Result/output:
 
